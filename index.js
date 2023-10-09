@@ -19,8 +19,6 @@ function myFunction() {
 
 
 
-
-
 /* 🚀🚀🚀 Task 2: Counter 🚀🚀🚀 */
 /* Use summation to do the following:
     1. Receive a number as an argument passed from a parameter
@@ -30,11 +28,22 @@ function myFunction() {
 💡 NOTE: you may use a for loop for this function if you wish 
 */
 
-function summation(/*Your Code Here*/) {
-  /*Your Code Here*/
+function summation(number) {
+  
+  const summationArray = [];
+  
+  for (let i = 0; i <= number; i++) {
+    summationArray.push(i)}
+  
+  const reducedSummation = summationArray.reduce((total, number) => 
+    {return total + number;}, 0);
 
-  }
- 
+  return reducedSummation;
+
+  };
+
+console.log("task 2 = " + summation(4)); 
+
 
 // 🦁🦁🦁 Topic 2: ADVANCED Array Methods 🦁🦁🦁
 // Given this zoo data from around the United States, follow the instructions below. Use the specific array methods in the requests below to solve the problems.
@@ -60,9 +69,19 @@ const zooAnimals = [
   💡 NOTE: the array returned should be an array of strings, and each string should follow this pattern: "name: {name}, scientific: {scientific name}"
   */
 
-  function animalNames(/*Your Code Here*/){
-    /*Your Code Here*/
-  }
+  function animalNames(argumentArray){
+
+    const displayNames = [];
+
+    argumentArray.forEach(argumentArray => {
+      displayNames.push(`name: ${argumentArray.animal_name}, scientific: ${argumentArray.scientific_name}`)
+    });
+    
+    return displayNames;
+
+  };
+
+  console.log("test 2.1 = " + animalNames(zooAnimals));
   
 
   /* 🦁🦁🦁 Request 2: .map() 🦁🦁🦁
@@ -75,9 +94,21 @@ const zooAnimals = [
   💡 NOTE: Do some research for other methods that can help help you
   */
 
-  function lowerCaseNames(/*Your Code Here*/){
-    /*Your Code Here*/
+  function lowerCaseNames(array){
+ 
+    const newArray = array.map((value) => {
+      return value.animal_name;
+    });
+    
+    const lowerArray = newArray.map((name) => {
+      return name.toLowerCase()
+    });
+    
+    return lowerArray;
+
   }
+  
+  console.log('test 2.2 = ' + lowerCaseNames(zooAnimals));
   
   
   /* 🦁🦁🦁 Request 3: .filter() 🦁🦁🦁
@@ -88,8 +119,14 @@ const zooAnimals = [
   3. Return this new array
   */
 
-  function lowPopulationAnimals(/*Your Code Here*/){
-    /*Your Code Here*/
+  function lowPopulationAnimals(array){
+
+    const filteredArray = array.filter((value) => {
+      return value.population < 5
+    });
+    
+  return filteredArray;
+
   }
   
 
@@ -102,9 +139,17 @@ const zooAnimals = [
   💡 NOTE: Remember the reduce method takes two arguments: a callback (which itself takes two args - the accumulator and the item), and an initial value for the count. Check MDN/W3Schools for syntax!
   */
 
-  function USApop(/*Your Code Here*/){
-    /*Your Code Here*/
-  }
+  function USApop(array){
+  
+    const reduceArray = array.reduce((total, population) => {
+      return total + population.population;
+    }, 0);
+
+    return reduceArray;
+
+  };
+
+  console.log('task 2.3 = ' + USApop(zooAnimals));
   
   
   // 🦁🦁🦁 Callbacks 🦁🦁🦁  
@@ -116,8 +161,10 @@ const zooAnimals = [
     💡 NOTE: The tests for 'consume' will pass if it is created correctly and also after you correctly complete the functions 'add' and 'greeting' below in Step 2.
   */
 
-  function consume(/*Your Code Here */){
-    /*Your Code Here */
+  function consume(a, b, cb){
+    
+    return cb(a, b);
+
   }
  
   
@@ -128,9 +175,14 @@ const zooAnimals = [
  2. Return the sum of those numbers
  */
 
-function add(/*Your Code Here */){
-    /*Your Code Here*/
-  }
+ function add(a, b){
+
+  const answer = a + b
+  return answer;
+
+};
+
+console.log('task 3.1 = ' + consume(1, 2, add));
 
 
 /* Use multiply to do the following:
@@ -138,9 +190,14 @@ function add(/*Your Code Here */){
 2. Return the product of those numbers
 */
 
-function multiply(/*Your Code Here */){
-   /*Your Code Here */
+function multiply(a, b){
+
+  const answer = a * b
+  return answer;
+
   }
+
+  console.log('task 3.2 = ' + consume(1, 2, multiply));
 
 
  /* Use greeting to do the following:
@@ -149,16 +206,20 @@ function multiply(/*Your Code Here */){
 💡 NOTE: The string returned must match the format above or the test will not pass!
 */
 
-function greeting(/*Your Code Here */){
-   return /*Your Code Here */
+function greeting(a, b){
+    
+    return `Hello ${a} ${b}, nice to meet you!`;
+
   }
+
+  console.log('task 3.3 = ' + consume('Bilbo', 'Baggins', greeting));
   
   
 // 🦁🦁🦁 Step 3: Check your work by un-commenting the following calls to consume(): 🦁🦁🦁 
 // ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️
-// console.log(consume(2, 2, add)); // 4
-// console.log(consume(10, 16, multiply)); // 160
-// console.log(consume("Mary", "Poppins", greeting)); // Hello Mary Poppins, nice to meet you!
+ console.log(consume(2, 2, add)); // 4
+ console.log(consume(10, 16, multiply)); // 160
+ console.log(consume("Mary", "Poppins", greeting)); // Hello Mary Poppins, nice to meet you!
 
 
 
